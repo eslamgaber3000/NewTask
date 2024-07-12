@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('title')
-    show
+    show sub
 @endsection
 
 
@@ -25,7 +25,12 @@
                   <p class="card-text">{{ $subCategory->category->desc }}</p>
                  
                 </div>
-                
+                <form action="{{url("dashboard/edit/$subCategory->id")}}" method="get">
+                  <button class="btn btn-info" type="submit">edit</button>
+                </form>
+                <form action="{{url("dashboard/edit/$subCategory->id")}}" method="post">
+                  <button class="btn btn-info" type="submit">edit</button>
+                </form>
                 </div>
               </div>
             </div>

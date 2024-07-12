@@ -73,4 +73,65 @@ class SubCatController extends Controller
         return view('dashboard.user.showSub')->with('subCategory',$subCategory);
 
     }
+
+    public function edit($id){
+        $subCategory=SubCat::findOrFail($id);
+        $categories=Category::all();
+        return view("dashboard.user.editSub",['subCategory'=>$subCategory,'categories'=>$categories]);
+        // dd($subCategory);
+    }
+
+    public function update(Request $request , $id){
+
+        //catch update data
+        $name=$request->sub_name;
+        $desc=$request->sub_desc;
+        $category_id=$request->category_id;
+
+    //validateio on comming data
+    $data=$request->validate([
+
+    'sub_name'=>'required |max:20 |string',
+    'sub_desc'=>'required |string',
+    'category_id'=>'required |exists:categories,id',
+    'image'=>'image|mimes:png,jpg,jpeg,gif'
+
+]);
+$subCategory=SubCat::findOrFail($id);
+$destination='subcategories/';
+$old_image=$subCategory->image;
+//check on image if it exists on request (delete old image, change image and move it to folder in my app and update image name in database)
+if($image=$request->file('image')){
+    // unlink($destination.$old_image);
+
+    $NewImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+    $image->move($destination, $NewImage);
+
+    }else{
+
+        $NewImage=$old_image;
+
+        }
+  $subCategory->update([
+            'name'=>$name,
+            'desc'=>$desc,
+            'category_id'=>$category_id,
+            'image'=>$NewImage
+
+  ]);
+
+    session()->flash('success','subCategory updated successfully');
+     return redirect(url("dashboard/show/$subCategory->id"));
+    
+
+        // dd($name,$desc,$category_id);
+
+
+
+        //validation 
+        //check on image if he uptated or not if updted unset to old image and add new image to database and my app
+    }
+
+
+    //delete in laravel ( take id , unlink image if exist ,)
 }

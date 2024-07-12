@@ -45,6 +45,9 @@ Route::controller(SubCatController::class)->prefix('dashboard')->group(function(
     Route::get('home','all');
     Route::get('show/{id}','show');
 
+    Route::get('edit/{id}','edit');
+    Route::put('update/{id}','update');
+
 });
 
 
