@@ -72,4 +72,13 @@ class ProductController extends Controller
 
 
     }
+
+
+    public function show($id){
+
+        $product=Product::findOrFail($id);
+
+        // dd($product);
+        return view('dashboard.user.product.show_product',compact('product'));
+    }
 }

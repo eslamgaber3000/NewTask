@@ -54,6 +54,8 @@ Route::controller(SubCatController::class)->prefix('dashboard')->group(function(
 });
 
 
+
+
 Route::controller(ProductController::class)->prefix('product')->group(function(){
 // create 
 Route::get('create','create')->name('products.create');
@@ -67,12 +69,15 @@ Route::put('eit','update');
 //select all 
 
 Route::get('all','all')->name('products.all');
-Route::get('show/{$id}','show');
+
+
+Route::get('show/{id}','show');
 
 //delete
 Route::delete('delete','destroy');
-    
+
 });
+
 
 
 
