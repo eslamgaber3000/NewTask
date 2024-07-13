@@ -4,6 +4,7 @@ use App\Models\SubCat;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubCatController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 
 /*
@@ -53,8 +54,25 @@ Route::controller(SubCatController::class)->prefix('dashboard')->group(function(
 });
 
 
-// Route::controller(SubCatController::class)->group({
+Route::controller(ProductController::class)->prefix('product')->group(function(){
+// create 
+Route::get('create','create')->name('products.create');
+Route::post('create','store')->name('products.store');
 
-// Route::get('category','viewForm');
-// Route::post('category','store')->name('category.make');
-// });
+//update
+
+Route::get('edit','edit');
+Route::put('eit','update');
+
+//select all 
+
+Route::get('all','all');
+Route::get('show/{$id}','show');
+
+//delete
+Route::delete('delete','destroy');
+    
+});
+
+
+
