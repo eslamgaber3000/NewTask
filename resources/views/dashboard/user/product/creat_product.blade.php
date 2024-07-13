@@ -22,35 +22,21 @@ create product
 
         <div class="pull-right">
 
-            {{-- <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a> --}}
+            <a class="btn btn-primary" href="{{ route('products.all') }}"> Back</a>
 
         </div>
 
     </div>
+    
 
 </div>
 
      
 
-{{-- @if ($errors->any())
 
-    <div class="alert alert-danger">
 
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
-
-        <ul>
-
-            @foreach ($errors->all() as $error)
-
-                <li>{{ $error }}</li>
-
-            @endforeach
-
-        </ul>
-
-    </div>
-
-@endif --}}
+@include("errors")
+@include("success")
 
      
 
@@ -78,7 +64,7 @@ create product
 
             <div class="form-group">
 
-                <strong>Detail:</strong>
+                <strong>quantity:</strong>
 
                 <input type="number" name="qty" class="form-control" value="{{old('qty')}}" placeholder="quantity">
                

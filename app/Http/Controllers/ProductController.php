@@ -22,6 +22,7 @@ class ProductController extends Controller
         $qty=$request->qty;
         $price=$request->price;
         $category_id=$request->category_id;
+        $image=$request->image;
 
         // dd($request->all());
 
@@ -33,9 +34,21 @@ class ProductController extends Controller
         'price'=>'required|decimal:2,4',
         'qty'=>'required|integer',
         'category_id'=>'required|exists:categories,id',
+        'image'=>'image|mimes:png,jpg,jpeg,gif,max:2000'
         
         ]);
+
+        //image (catch image ,validate image , change name, move uplaoded file )
+
         //  , sore ,
+
+        if($request->file('image')){
+
+            $newName=time().'.'.$image->extension();
+            $data['image']=$newName;
+            $image->move('products',$newName);
+            
+        }
         
         Product::create($data);
         
@@ -43,7 +56,19 @@ class ProductController extends Controller
 
         session()->flash('success','product added succssufly');
 
-        return redirect(route('products.create'));
+        return redirect(route('products.all'));
+
+
+    }
+
+
+    public function all(){
+
+
+        $products=Product::all();
+        return view("dashboard.user.product.all_products")->with('products',$products);
+
+
 
 
     }

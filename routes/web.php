@@ -66,7 +66,7 @@ Route::put('eit','update');
 
 //select all 
 
-Route::get('all','all');
+Route::get('all','all')->name('products.all');
 Route::get('show/{$id}','show');
 
 //delete
