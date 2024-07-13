@@ -40,7 +40,13 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Image:</strong>
+            <strong>producct Category</strong>
+            {{ $product->category->name }}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+           
             <img src="{{ asset("products/$product->image") }}" width="500px">
         </div>
     </div>

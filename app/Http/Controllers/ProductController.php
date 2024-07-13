@@ -141,4 +141,20 @@ public function update(Request $request , $id){
 
 }
 
+public function destroy ($id){
+
+
+    $product=Product::findOrFail($id);
+    $image=$product->image;
+
+    $product->delete();
+
+    //after you delete this don't forget to delete your image
+    if($image){
+
+        unlink("products/$image");
+    }
+    return redirect(route("products.all"));
+}
+
 }

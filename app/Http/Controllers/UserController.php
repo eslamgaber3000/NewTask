@@ -24,11 +24,13 @@ public function loginUser(Request $request){
     ]);
     if(Auth::attempt($credentials)){
      
-        return redirect('/');
-    
+        return redirect(route("products.all"));
+        
+    }else{
+        
+        session()->flash('errors','Invalid credentials. Please try again');
+        return redirect('dashboard/login');   
     }
-    session()->flash('errors','Invalid credentials. Please try again');
-    return redirect('dashboard/login');   
 
 }
 

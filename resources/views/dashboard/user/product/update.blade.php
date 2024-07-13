@@ -61,6 +61,7 @@
                 <strong>category</strong>
 
                 <select name="category_id" id="" class="form-control">
+                <option value="{{$product->category->id}}">{{$product->category->name}}</option>
 
                     @foreach ($categories as $category )
                         
