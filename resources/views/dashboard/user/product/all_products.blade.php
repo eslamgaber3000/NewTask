@@ -46,11 +46,11 @@ all products
 
 
             <td>
-                <form action="{{ route('products.destroy',$product->id) }}" method="POST">
+                <form action="{{ route('product.destroy',$product->id) }}" method="POST">
      
                     <a class="btn btn-info" href="{{ url("product/show/$product->id") }}">Show</a>
       
-                    <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('product.edit',$product->id) }}">Edit</a>
      
                     @csrf 
                     @method('DELETE')

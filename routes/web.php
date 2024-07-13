@@ -63,18 +63,17 @@ Route::post('create','store')->name('products.store');
 
 //update
 
-Route::get('edit','edit');
-Route::put('eit','update');
+Route::get('edit/{id}','edit')->name('product.edit');
+
+Route::put('edit/{id}','update')->name('product.update');
 
 //select all 
 
 Route::get('all','all')->name('products.all');
-
-
 Route::get('show/{id}','show');
 
 //delete
-Route::delete('delete','destroy');
+Route::delete('delete/{id}','destroy')->name('product.destroy');
 
 });
 
