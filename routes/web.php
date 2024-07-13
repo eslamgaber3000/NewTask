@@ -48,6 +48,8 @@ Route::controller(SubCatController::class)->prefix('dashboard')->group(function(
     Route::get('edit/{id}','edit');
     Route::put('update/{id}','update');
 
+    Route::delete('destroy/{id}','destroy');
+
 });
 
 

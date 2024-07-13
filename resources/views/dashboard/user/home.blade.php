@@ -8,6 +8,8 @@
 
 @section('content')
 
+@include("success")
+
 <div class="table-responsive table-responsive-sm">
     <table class="table table-sm my-custom-padding">
       <thead>

@@ -134,4 +134,21 @@ if($image=$request->file('image')){
 
 
     //delete in laravel ( take id , unlink image if exist ,)
+
+    public function destroy($id){
+
+        $subCategory=SubCat::findOrFail($id);
+        $oldImage=$subCategory->image;
+        $destination='subcategories/';
+
+        $subCategory->delete();
+
+        //check if file exists
+        unlink( $destination.$oldImage);
+
+        session()->flash('success','subCategory deleted successfully');
+        return redirect(url("dashboard/home"));
+
+        
+    }
 }

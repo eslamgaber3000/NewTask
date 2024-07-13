@@ -25,12 +25,24 @@
                   <p class="card-text">{{ $subCategory->category->desc }}</p>
                  
                 </div>
-                <form action="{{url("dashboard/edit/$subCategory->id")}}" method="get">
-                  <button class="btn btn-info" type="submit">edit</button>
-                </form>
-                <form action="{{url("dashboard/edit/$subCategory->id")}}" method="post">
-                  <button class="btn btn-info" type="submit">edit</button>
-                </form>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-2">
+                    <form action="{{url("dashboard/edit/$subCategory->id")}}" method="get">
+                    <button class="btn btn-info" type="submit">edit</button>
+                  </form>
+                </div>
+                <div class="col-md-2">
+
+                  <form action="{{url("dashboard/destroy/$subCategory->id")}}" method="post">
+                    @method('DELETE')
+                    @csrf
+                    <button class="btn btn-danger" type="submit">delete</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
                 </div>
               </div>
             </div>
